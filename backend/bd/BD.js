@@ -2,11 +2,10 @@ const mysql = require("mysql2/promise");
 
 // Función para crear la base de datos si no existe
 const createDatabaseIfNotExists = async () => {
-    // Conexión inicial sin especificar base de datos
+    // Conexión inicial sin especificar base de datos y sin contraseña
     const connection = await mysql.createConnection({
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD
+        host: process.env.DB_HOST || 'localhost',
+        user: process.env.DB_USER || 'root'
     });
 
     // Crear base de datos si no existe
@@ -14,17 +13,16 @@ const createDatabaseIfNotExists = async () => {
     await connection.end(); // Cerramos la conexión
 };
 
-// Creamos una función para realizar la conexión a la bd
+// Función para realizar la conexión a la base de datos
 const newConnection = async () => {
     // Llamamos a la función que crea la base de datos si no existe
     await createDatabaseIfNotExists();
-    
-    // Conexión a la base de datos especificada
+
+    // Conexión a la base de datos especificada y sin contraseña
     const connection = await mysql.createConnection({
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_NAME // nombre de nuestra bd
+        host: process.env.DB_HOST || 'localhost',
+        user: process.env.DB_USER || 'root',
+        database: process.env.DB_NAME
     });
 
     // Crear la tabla USUARIOS si no existe

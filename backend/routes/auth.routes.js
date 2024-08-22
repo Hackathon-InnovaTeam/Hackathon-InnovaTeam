@@ -5,10 +5,10 @@ const express = require('express');
 const router = express.Router();
 
 // Ruta para registro de usuarios con el método POST.
-router.post('/register', registro);
+router.post('/api/register', registro);
 
 // Ruta para login de usuarios con el método POST.
-router.post('/login', login);
+router.post('/api/login', login);
 
 // Exportamos las rutas para que puedan ser utilizadas en la aplicación principal.
 module.exports = router;

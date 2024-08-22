@@ -1,5 +1,5 @@
 // Tomamos el form del html.
-const form = document.getElementById('form-iniciosesion');
+const formLogin = document.getElementById('form-iniciosesion');
 
 // Funcion para iniciar sesión.
 const login = async (e) => {
@@ -8,11 +8,11 @@ const login = async (e) => {
 
     // Tomamos los valores de los inputs.
     const email = document.getElementById('usuario').value;
-    const password = document.getElementById('contraseña').value;
+    const password = document.getElementById('contrasenia').value;
 
     try {
         // Realizamos la petición a nuestro servidor.
-        const response = await fetch('http://localhost:3000/login', {
+        const response = await fetch('http://localhost:3000/api/login', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: { 'Content-type': 'application/json' }
@@ -37,4 +37,4 @@ const login = async (e) => {
 };
 
 // Añadimos el evento submit al formulario.
-form.addEventListener('submit', login);
+formLogin.addEventListener('submit', login);
