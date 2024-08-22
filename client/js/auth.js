@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     } else {
         // Si hay token, mostrar el botón de cerrar sesión
-        document.getElementById('nav-item').innerHTML = `<li><a href="" id="logout">Cerrar Sesión</a></li>`;
+        document.getElementById('nav-item').innerHTML = `<button href="" id="logout" class="logout-btn">Cerrar Sesión</button>`;
 
         document.getElementById('logout').addEventListener('click', () => {
             localStorage.removeItem('token');
