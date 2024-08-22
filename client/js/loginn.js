@@ -20,5 +20,3 @@ signupForm.addEventListener('submit', function(event) {
         console.log('Las contraseñas coinciden.');
     }
 });
-
-console.log("archivo login bien ")
