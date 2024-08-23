@@ -18,17 +18,19 @@
 
     <!-- Main content -->
     <main class="main-content">
-        <div id="mapa">
+        <div class="map-container">
+            <div id="mapa">
             <div id="lineas">
                 <button class= "boton-lineas" onclick="toggleLineas()">Mostrar/Ocultar Líneas</button>
-                <div id="lista-lineas" style="display:none;">
+                    <div id="lista-lineas" style="display:none;">
                     <!-- Aquí se añadirán las líneas de autobús -->
-                </div>
+                    </div>
                 <label>
                     <input type="checkbox" id="toggle-paradas"> Mostrar Paradas
                 </label>
             </div>
             </div>
+        </div>
     </main>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="js/auth.js"></script>
