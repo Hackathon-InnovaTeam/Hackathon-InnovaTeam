@@ -66,5 +66,24 @@ ctrl.login = async (req, res) => {
     });
 }
 
+
+ctrl.contacto = async (req, res) => {
+    // Desestructuramos los datos que vienen del cuerpo de la petición.
+    const { nombre, email, mensaje } = req.body;
+
+    // Hacemos la conexión a la base de datos.
+    const connection = await newConnection();
+
+    // Creamos la consulta.
+    const sql = 'INSERT INTO CONTACTO (nombre, email, mensaje) VALUES (?,?,?)';
+
+    // Ejecutamos la consulta.
+    await connection.query(sql, [nombre, email, mensaje]);
+
+    // Respondemos a nuestro cliente
+    res.json({
+        msg: 'Mensaje enviado correctamente'
+    });
+}
 // Exportamos el objeto con los controladores.
 module.exports = ctrl;

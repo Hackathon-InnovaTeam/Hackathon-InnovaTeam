@@ -33,6 +33,14 @@ const newConnection = async () => {
         contrasenia VARCHAR(255) NOT NULL
     )`);
 
+    // Crear la tabla USUARIOS si no existe
+    await connection.query(`CREATE TABLE IF NOT EXISTS CONTACTO (
+      idContacto INT AUTO_INCREMENT PRIMARY KEY,
+      nombre VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL,
+      mensaje VARCHAR(255) NOT NULL
+  )`);
+
     return connection; // Retornamos la conexión
 };
 
