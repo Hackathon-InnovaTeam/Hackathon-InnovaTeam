@@ -1,7 +1,7 @@
-// Requerimos las dependencias necesarias.
 const express = require("express");
 const cors = require('cors');
 const morgan = require('morgan');
+const path = require('path'); // Para manejar rutas de archivos
 const { newConnection } = require("./bd/BD");
 require('dotenv').config(); // Carga las variables de entorno desde el archivo .env
 
@@ -16,34 +16,16 @@ app.use(express.json()); // Permite a Express procesar JSON en el body de las pe
 // Requerimos y aplicamos nuestras rutas de autenticación.
 app.use(require('./routes/auth.routes'));
 
-// Rutas adicionales para gestionar usuarios.
-// Obtener todos los usuarios
-app.get("/", async (req, res) => {
-    try {
-        const connection = await newConnection();
-        const [results] = await connection.query("SELECT * FROM USUARIOS");
-        res.json(results);
-        connection.end();
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener los usuarios' });
-    }
-});
+// Servir archivos estáticos desde la carpeta 'client'
+app.use(express.static(path.join(__dirname, '../client')));
 
-// Obtener un usuario por ID
-app.get("/usuarios/:IdUsuario", async (req, res) => {
-    try {
-        const connection = await newConnection();
-        const id = req.params.IdUsuario;
-        const [results] = await connection.query("SELECT * FROM USUARIOS WHERE IdUsuario = ?", [id]);
-        if (results.length > 0) {
-            res.json(results[0]);
-        } else {
-            res.status(404).json({ error: 'Usuario no encontrado' });
-        }
-        connection.end();
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener el usuario' });
-    }
+// Ruta para la página de inicio
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, '../client', 'index.html'));
+});
+// Ruta para landing.html
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, '../client', 'landing.html'));
 });
 
 // Iniciamos el servidor en el puerto 3000.

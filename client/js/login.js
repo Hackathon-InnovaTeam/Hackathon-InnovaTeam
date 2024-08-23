@@ -25,7 +25,7 @@ const login = async (e) => {
         if (response.ok) {
             alert(data.msg); // Mensaje de éxito
             localStorage.setItem('token', data.token);
-            window.location.href = '/client/landing.html'; // Redirigir al usuario
+            window.location.href = '/landing.html'; // Redirigir al usuario
         } else {
             alert(data.msg); // Mensaje de error
         }

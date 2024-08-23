@@ -10,5 +10,7 @@ router.post('/api/register', registro);
 // Ruta para login de usuarios con el método POST.
 router.post('/api/login', login);
 
+
+
 // Exportamos las rutas para que puedan ser utilizadas en la aplicación principal.
 module.exports = router;
