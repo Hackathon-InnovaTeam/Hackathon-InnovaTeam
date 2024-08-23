@@ -350,11 +350,13 @@ function mostrarLinea(linea) {
         // Guardar la información en localStorage
       let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
       favoritos.push(paradaInfo);
+      console.log(favoritos)
       localStorage.setItem("favoritos", JSON.stringify(favoritos));
 
         popup._close();
       });
     }
+    
 
     let colectivoBtn = popup.getElement().querySelector(".colectivoBtn");
     if (colectivoBtn) {
